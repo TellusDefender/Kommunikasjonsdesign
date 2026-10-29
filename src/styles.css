@@ -1,0 +1,74 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --radius-lg: var(--radius);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-bubble: var(--bubble);
+  --color-bubble-foreground: var(--bubble-foreground);
+  --color-good: var(--good);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.97 0.012 85);
+  --foreground: oklch(0.2 0.02 60);
+  --card: oklch(0.99 0.008 85);
+  --card-foreground: oklch(0.2 0.02 60);
+  --primary: oklch(0.62 0.19 38);
+  --primary-foreground: oklch(0.99 0.01 85);
+  --secondary: oklch(0.92 0.02 85);
+  --secondary-foreground: oklch(0.25 0.02 60);
+  --muted: oklch(0.93 0.015 85);
+  --muted-foreground: oklch(0.5 0.02 60);
+  --accent: oklch(0.88 0.08 90);
+  --accent-foreground: oklch(0.2 0.02 60);
+  --destructive: oklch(0.58 0.22 27);
+  --border: oklch(0.86 0.02 80);
+  --input: oklch(0.86 0.02 80);
+  --ring: oklch(0.62 0.19 38);
+  --ink: oklch(0.17 0.01 260);
+  --ink-foreground: oklch(0.95 0.01 85);
+  --bubble: oklch(0.27 0.015 260);
+  --bubble-foreground: oklch(0.95 0.01 85);
+  --good: oklch(0.6 0.14 150);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+}
+
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes blink { 50% { opacity: 0; } }
+.animate-rise { animation: rise .6s ease both; }
+.caret::after { content: "▍"; animation: blink 1s step-end infinite; color: var(--primary); }
+.reveal { opacity: 0; transform: translateY(16px); transition: all .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
